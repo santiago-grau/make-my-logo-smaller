@@ -105,6 +105,10 @@ textarea {
 @bgcolor2: #158dfe;
 @fgcolor2: #FFFFFF;
 
+
+html, body{
+	height: 100%;
+}
 #assets{
 	display: none;
 }
@@ -115,7 +119,8 @@ textarea {
 	top: 0;
 	left: 0;
 }
-#messages{
+#bubbles{
+	margin-top: 100vh;
 	.bubble{
 		font-family: Helvetica, Arial, 'sans serif';
 		font-size: 14px;
@@ -147,7 +152,7 @@ textarea {
 			background: @bodybgcolor;
 			display: block;
 		}
-		&.left{
+		&.client{
 			float: left;
 			margin-left: 16px;
 			background: @bgcolor1;
@@ -162,7 +167,7 @@ textarea {
 				border-bottom-right-radius: 15px 15px;
 			}
 		}
-		&.right{
+		&.designer{
 			float: right;
 			margin-right: 16px;
 			background: @bgcolor2;
