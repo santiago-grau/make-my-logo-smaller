@@ -9,7 +9,7 @@ define(
 			{
 				user: 'designer',
 				copy: 'Here\'s the proposal for your logo, hope you like it',
-				pos: 100 
+				pos: 0 
 			},
 			{
 				user: 'client',

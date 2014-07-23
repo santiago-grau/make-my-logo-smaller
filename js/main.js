@@ -1,29 +1,3 @@
-// var resize = function(){
-// 	var rect = logo.getBoundingClientRect();
-// 	console.log(two)
-// 	logo.translation.set(two.width/2, two.height/2);
-// }
-// var two = new Two({ type: Two.Types['opengl'], height: $(window).height(), width: $(window).width()}).appendTo($('#logo')[0]);
-// var logo = two.interpret(document.getElementById("logo1")).center();
-// logo.fill = '#000';
-// resize();
-// two.update();
-
-// var addBubble = function(bubble){
-// 	console.log(bubble)
-// }
-// _.each(conversation, addBubble);
-
-// // $('#scroller').height($(window).height() + 1000)
-
-
-// $(window).bind('scroll', function(e){
-// 	console.log($(window).scrollTop())
-// })
-
-
-
-
 // Filename: main.js
 'use strict';
 require.config({
@@ -58,8 +32,10 @@ require.config({
 	},
 	paths: {
 		views: 'js/views',
+		models: 'js/models',
 		collections: 'js/collections',
 		assets: 'js/assets',
+		templates: 'js/templates',
 		tween: 'bower_components/tween.js/build/tween.min',
 		jquery: 'bower_components/jquery/dist/jquery.min',
 		underscore: 'bower_components/underscore/underscore',
@@ -70,6 +46,9 @@ require.config({
 });
 require(['views/app'],
 	function(App){
+		console.log('╔╦╗╔═╗╦╔═╔═╗         \n║║║╠═╣╠╩╗║╣          \n╩ ╩╩ ╩╩ ╩╚═╝         \n╔╦╗╦ ╦  ╦  ╔═╗╔═╗╔═╗ \n║║║╚╦╝  ║  ║ ║║ ╦║ ║ \n╩ ╩ ╩   ╩═╝╚═╝╚═╝╚═╝ \n╔═╗╔╦╗╔═╗╦  ╦  ╔═╗╦═╗\n╚═╗║║║╠═╣║  ║  ║╣ ╠╦╝\n╚═╝╩ ╩╩ ╩╩═╝╩═╝╚═╝╩╚═\n.....................\n└─────> DEV BY PROPER CODE\n└─────> ♥ C.M. \n└─────> App started')
 		window.app = new App();
 	}
 );
+
+
