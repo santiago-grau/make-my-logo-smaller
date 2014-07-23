@@ -35,6 +35,21 @@ define(
 				user: 'client',
 				copy: 'Well it\'s quite un-aesthetic, remove it please',
 				pos: 900 
+			},
+			{
+				user: 'designer',
+				copy: 'Sure, how about now?',
+				pos: 1800
+			},
+			{
+				user: 'client',
+				copy: 'Looks better but the font looks very antique, can you make it more modern?',
+				pos: 2000 
+			},
+			{
+				user: 'designer',
+				copy: 'Like this?',
+				pos: 2200
 			}
 		]);
 		return Bubbles;

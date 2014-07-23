@@ -5,10 +5,9 @@ define(
 		'underscore',
 		'backbone',
 		'collections/bubbles',
-		'text!templates/bubble.tpl',
-		'views/app'
+		'text!templates/bubble.tpl'
 	],
-	function($, _, Backbone, Collection, Template, App){
+	function($, _, Backbone, Collection, Template){
 		var Bubbles = Backbone.View.extend({
 			el: '#bubbles',
 			collection: Collection,
@@ -29,6 +28,17 @@ define(
 				}
 			},
 			scroll: function(model){
+				// var speed = model.get('scrollSpeed')/10;
+				// var delta = Math.min(Math.abs(speed), 10);
+				// var inc = delta * Math.abs(speed)/speed
+				// this.$('.bubble.active').each(function(){
+				// 	$(this).css({
+				// 		'transform' : 'translateY('+inc+'px)',
+				// 		'-ms-transform' : 'translateY('+inc+'px)',
+				// 		'-moz-transform' : 'translateY('+inc+'px)',
+				// 		'-webkit-transform' : 'translateY('+inc+'px)'
+				// 	})
+				// })
 				var bubble = this.collection.at(model.get('currentBubble'));
 				if(model.get('scroll') - bubble.get('el').outerHeight() > bubble.get('pos') + 10){
 					if(!bubble.get('el').hasClass('active')) this.showBubble(bubble);
