@@ -9,61 +9,68 @@ define(
 		'collections/animations'
 	],
 	function($, _, Backbone, Two, Tween, Collection){
-		var Ani = Backbone.View.extend({
-			initialize: function(data){
-				_.extend(this, data);
-				this.logo = this.two.interpret(document.getElementById("logo1")).center();
-				this.logo.fill = '#000'
-				this.logo.scale = 0.5;
-				this.tween = new TWEEN.Tween( { x: 0} ).to( { x: 1 }, 1200 ).easing( TWEEN.Easing.Elastic.Out )
-				.onUpdate( _.bind(this.update, this) ).start();
-				this.two.play();
-				this.tween.stop;
-				this.animate();
-				return this;
-			},
-			update: function(scale){
-				this.logo.scale = scale;
-			},
-			resize: function(){
-				var rect = this.logo.getBoundingClientRect();
-				this.logo.translation.set(this.two.width/2, this.two.height/2);
-				this.two.update();
-			},
-			animate: function(time){
-				TWEEN.update(time||0);
-				requestAnimationFrame( _.bind(this.animate,this) );
-			}
-		});
-		var Logo1 = Backbone.View.extend({
-			initialize: function(){
-
-			}
-		});
-		var AnimationsModel = Backbone.Model.extend({
-			defaults: {
-				animation: null
-			}
-		});
+		var animations = {
+			Init: Backbone.View.extend({
+				initialize: function(data){
+					_.extend(this, data);
+					this.two = new Two({ type: Two.Types['canvas'], height: this.$el.height(), width: this.$el.width()}).appendTo(this.$el[0]);
+					this.logo = this.two.interpret(document.getElementById("logo1")).center();
+					this.logo.fill = '#000'
+					this.logo.scale = 0;
+					this.tween = new TWEEN.Tween( { x: 0} ).to( { x: 1 }, 3000 ).easing( TWEEN.Easing.Elastic.Out )
+					.onUpdate( _.bind(this.update, this) ).start();
+					this.two.play();
+					this.resize();
+					this.animate();
+				},
+				update: function(scale){
+					this.logo.scale = scale;
+				},
+				resize: function(){
+					var rect = this.logo.getBoundingClientRect();
+					this.logo.translation.set(this.two.width/2, this.two.height/2);
+					this.two.update();
+				},
+				animate: function(time){
+					TWEEN.update(time||0);
+					requestAnimationFrame( _.bind(this.animate,this) );
+				}
+			}),
+			Logo1: Backbone.View.extend({
+				initialize: function(data){
+					_.extend(this, data);
+					this.two = new Two({ type: Two.Types['canvas'], height: this.$el.height(), width: this.$el.width()}).appendTo(this.$el[0]);
+					this.el = this.two.renderer;
+					this.logo = this.two.interpret(document.getElementById("logo1")).center();
+					this.logo.fill = '#000'
+					this.logo.scale = 0.5;
+					var underWidth = 0;
+					_.each(this.logo.children, function(element, index, list){
+						if(index.indexOf('ul') !== -1){
+							underWidth += element.getBoundingClientRect().width
+						}
+					});
+					this.underWidth = underWidth;
+				},
+				scroll: function(e){
+					console.log(e)
+				}
+			})
+		}
 		var Animations = Backbone.View.extend({
 			el: '#animations',
 			collection: Collection,
-			model: new AnimationsModel(),
 			initialize: function(data){
 				_.extend(this, data);
-				this.model.bind('change:animation', this.setAnimation, this);
+				this.parent.model.bind('change:animation', this.setAnimation, this);
 				this.parent.$el.bind('resize', _.bind(this.resize, this));
 				this.parent.model.bind('change:scroll', this.scroll, this);
-				this.two = new Two({ type: Two.Types['opengl'], height: this.$el.height(), width: this.$el.width()}).appendTo($('#animations')[0]);
-				this.renderer = this.two.renderer.domElement;
-				this.animation = new Ani({two: this.two});
-				this.resize();
-				this.two.update();
+				this.collection.each(_.bind(this.makeAnimation, this));
+				$('.ani').first().show()
 			},
-			setAnimation: function(model){
-				this.animationName = model.get('animation');
-				console.log(eval(this['animationName']))
-				this.animation = new eval(this['animationName'])();
+			makeAnimation: function(element, index, list){
+				var animation = new animations[element.get('id')]({el: $('<div class="ani" />').appendTo(this.$el), parent: this, model: element});
+				this.collection.at(index).set('el', $('.ani').last());
 			},
 			scroll: function(model){
 				var animation = this.collection.at(model.get('currentBubble'));
@@ -71,17 +78,12 @@ define(
 				var active = this.collection.find(function(animation) {
 					return (animation.get('from') <= scroll) && (animation.get('to') > scroll);
 				});
-				if(active) this.model.set('animation', active.get('id'));
-				else this.model.set(null);
+				if(active) this.parent.model.set('animation', active.get('id'));
+				else this.parent.model.set('animation', null);
+				if(this.animation && this.animation.scroll) this.animation.scroll(scroll);
 			},
 			resize: function(){
-				$(this.renderer).attr({
-					width: this.$el.width(),
-					height: this.$el.height()
-				})
-				this.two.width = this.$el.width();
-				this.two.height = this.$el.height();
-				this.animation.resize();
+				this.collection.each(_.bind(this.resizeAnimation, this));
 			}
 		});
 		return Animations;
