@@ -38,7 +38,7 @@ define(
 			},
 			{
 				user: 'designer',
-				copy: 'Sure, how about now?',
+				copy: 'Sure, better like this?',
 				pos: 1800
 			},
 			{
