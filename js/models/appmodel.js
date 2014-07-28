@@ -11,7 +11,8 @@ define(
 				scrolling: false,
 				scrollSpeed: 0,
 				currentBubble: 0,
-				animation: 'Init'
+				animation: 'Init',
+				prevAnimation: null
 			}
 		});
 		return AppModel;

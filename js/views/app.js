@@ -20,6 +20,7 @@ define(
 			},
 			scroll: function(){
 				this.model.set('scrollSpeed', this.$el.scrollTop() - this.model.get('scroll'));
+				//console.log(this.model.get('scrollSpeed'))
 				this.model.set('scroll', this.$el.scrollTop());
 				this.model.set('scrolling', true);
 				if(this.scrollTimer) clearTimeout($.data(this, 'scrollTimer'));
