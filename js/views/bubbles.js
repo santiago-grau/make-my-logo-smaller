@@ -45,8 +45,8 @@ define(
 					if(model.get('currentBubble') < this.collection.length - 1) model.set('currentBubble', model.get('currentBubble') + 1);
 				}
 			},
-			showBubble: function(bubble, model){
-				console.log('          └─────> ' + bubble.get('user').charAt(0).toUpperCase() + bubble.get('user').slice(1) + ' says: ' + bubble.get('copy'));
+			showBubble: function(bubble){
+				console.log('          └─────> ' + bubble.get('user').charAt(0).toUpperCase() + bubble.get('user').slice(1) + ' says: ' + bubble.get('copy') + '[scrollTop -> '+ bubble.get('pos') +']');
 				bubble.get('el').addClass('active').css({ top: bubble.get('pos') });
 			}
 		});

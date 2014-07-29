@@ -9,6 +9,21 @@ define(
 		'collections/animations'
 	],
 	function($, _, Backbone, Two, Tween, Collection){
+		var FontChange = Backbone.View.extend({
+			initialize: function(data){
+				_.extend(this, data);
+				_.bindAll(this, 'scroll');
+				this.mult = this.string.length/(this.model.get('to') - this.model.get('from') - 95);
+			},
+			scroll: function(scroll){
+				var index = Math.floor(scroll * this.mult);
+				this.parent.$('#inner_logo').html('<b>' + this.string.substring(0, index) + '</b>' + this.string.substring(index, this.string.length) );
+			},
+			endPosition: function(){
+				this.parent.$('#inner_logo').html(this.string );
+				this.parent.$el.children('span').addClass('swap');
+			}
+		});
 		var animations = {
 			Init: Backbone.View.extend({
 				initialize: function(data){
@@ -33,22 +48,38 @@ define(
 					this.parent.$('#inner_logo').html(this.string);
 				}
 			}),
-			FontChange1: Backbone.View.extend({
-				initialize: function(data){
-					_.extend(this, data);
-					_.bindAll(this, 'scroll');
-					this.mult = this.string.length/(this.model.get('to') - this.model.get('from') - 100);
-				},
-				scroll: function(scroll){
-					var index = Math.floor(scroll * this.mult);
-					this.parent.$('#inner_logo').html('<b>' + this.string.substring(0, index) + '</b>' + this.string.substring(index, this.string.length) );
-				},
-				endPosition: function(){
-					this.parent.$('#inner_logo').html(this.string );
-					this.parent.$el.children('span').addClass('swap');
-
-				}
-			})
+			FontChange1: FontChange.extend(),
+			FontChange2: FontChange.extend(),
+			FontSwap1: FontChange.extend(),
+			FontSwap2: FontChange.extend(),
+			FontSwap3: FontChange.extend(),
+			FontSwap4: FontChange.extend(),
+			FontSwap5: FontChange.extend(),
+			FontSwap6: FontChange.extend(),
+			FontSwap7: FontChange.extend(),
+			FontSwap8: FontChange.extend(),
+			FontSwap9: FontChange.extend(),
+			FontSwap10: FontChange.extend(),
+			FontSwap11: FontChange.extend(),
+			FontSwap12: FontChange.extend(),
+			FontSwap13: FontChange.extend(),
+			FontSwap14: FontChange.extend(),
+			FontSwap15: FontChange.extend(),
+			FontSwap16: FontChange.extend(),
+			FontSwap17: FontChange.extend(),
+			FontSwap18: FontChange.extend(),
+			FontSwap19: FontChange.extend(),
+			FontSwap20: FontChange.extend(),
+			FontSwap21: FontChange.extend(),
+			FontSwap22: FontChange.extend(),
+			FontSwap23: FontChange.extend(),
+			FontSwap24: FontChange.extend(),
+			FontSwap25: FontChange.extend(),
+			FontSwap26: FontChange.extend(),
+			FontSwap27: FontChange.extend(),
+			FontSwap28: FontChange.extend(),
+			FontSwap29: FontChange.extend(),
+			FontSwap30: FontChange.extend()
 		}
 		var Animations = Backbone.View.extend({
 			el: '#logo',

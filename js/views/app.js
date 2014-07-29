@@ -19,6 +19,7 @@ define(
 				this.animations = new Animations({parent:this});
 			},
 			scroll: function(){
+				console.log(this.$el.scrollTop())
 				this.model.set('scrollSpeed', this.$el.scrollTop() - this.model.get('scroll'));
 				//console.log(this.model.get('scrollSpeed'))
 				this.model.set('scroll', this.$el.scrollTop());
