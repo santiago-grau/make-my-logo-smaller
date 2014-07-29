@@ -43,7 +43,7 @@ define(
 				},
 				resize: function(){
 					var rect = this.parent.logo.getBoundingClientRect();
-					this.parent.logo.translation.set(this.two.width/2, this.two.height/2);
+					this.parent.logo.translation.set(this.parent.two.width/2, this.parent.two.height/2);
 				},
 				animate: function(time){
 					TWEEN.update(time||0);
@@ -70,11 +70,11 @@ define(
 					this.mult = underWidth/(this.model.get('to') - this.model.get('from'));
 				},
 				scroll: function(scroll){
+					console.log(scroll)
 					if(scroll*this.mult <= this.parent.logo.children.ul3.ow){
 						// animate 3rd nderline
 						var v3 = this.parent.logo.children.ul3.vertices[3];
 						var v2 = this.parent.logo.children.ul3.vertices[2];
-						//console.log(v3.ox - scroll*this.mult)
 						v3.set(v3.ox - scroll*this.mult, v3.oy);
 						v2.set(v2.ox - scroll*this.mult, v2.oy);
 						// make sure underline 1 and 2 are shown
@@ -82,6 +82,8 @@ define(
 						this.parent.logo.children.ul2.vertices[2].set(this.parent.logo.children.ul2.vertices[2].ox, this.parent.logo.children.ul2.vertices[2].oy);
 						this.parent.logo.children.ul1.vertices[3].set(this.parent.logo.children.ul1.vertices[3].ox, this.parent.logo.children.ul1.vertices[3].oy);
 						this.parent.logo.children.ul1.vertices[2].set(this.parent.logo.children.ul1.vertices[2].ox, this.parent.logo.children.ul1.vertices[2].oy);
+						// 1st word reset
+						this.parent.logo.children.word1.translation.y = this.parent.logo.children.word1.oy;
 					}else if(scroll*this.mult >= this.parent.logo.children.ul3.ow && scroll*this.mult <= this.parent.logo.children.ul2.ow + this.parent.logo.children.ul3.ow){
 						// animate 2nd underline
 						var v3 = this.parent.logo.children.ul2.vertices[3];
@@ -115,11 +117,10 @@ define(
 				},
 				resize: function(){
 					var rect = this.parent.logo.getBoundingClientRect();
-					this.parent.logo.translation.set(this.two.width/2, this.two.height/2);
+					this.parent.logo.translation.set(this.parent.two.width/2, this.parent.two.height/2);
 					this.two.update();
 				},
 				endPosition: function(){
-					
 					// make sure underlines are hidden
 					this.parent.logo.children.ul3.vertices[3].set(this.parent.logo.children.ul3.vertices[0].x, this.parent.logo.children.ul3.vertices[3].oy);
 					this.parent.logo.children.ul3.vertices[2].set(this.parent.logo.children.ul3.vertices[0].x, this.parent.logo.children.ul3.vertices[2].oy);
@@ -144,6 +145,31 @@ define(
 					this.parent.logo.children.word1.translation.y = this.parent.logo.children.word1.oy;
 					// 3rd word reset
 					this.parent.logo.children.word3.translation.y = this.parent.logo.children.word3.oy;
+				}
+			}),
+			Logo2: Backbone.View.extend({
+				initialize: function(data){
+					_.extend(this, data);
+					_.each(this.parent.logo.children, $.proxy(function(element, index, list){
+						if(index.indexOf('word') !== -1){
+							console.log(element.getBoundingClientRect())
+							element.ow = element.getBoundingClientRect().width;
+							element.oh = element.getBoundingClientRect().height;
+							element.oy = element.getBoundingClientRect().top;
+							element.ox = element.getBoundingClientRect().left;
+							this.parent.rect = this.parent.two.makeRectangle(element.ox + element.ow/2 , element.oy + element.oh/2 , element.ow + 60, element.oh + 60);
+						}
+					},this));
+					this.parent.logo.fill = '#000'
+					this.parent.two.play();
+					this.resize();
+				},
+				resize: function(){
+					var rect = this.parent.logo.getBoundingClientRect();
+					this.parent.logo.translation.set(this.parent.two.width/2, this.parent.two.height/2);
+				},
+				scroll: function(scroll){
+					
 				}
 			})
 		}
@@ -189,7 +215,7 @@ define(
 				if(active) active.get('animation').scroll(scroll - active.get('from'));
 			},
 			resize: function(){
-				this.collection.each(_.bind(this.resizeAnimation, this));
+				//if(this.animation.resize) _.bind(this.animation.resize, this);
 			}
 		});
 		return Animations;

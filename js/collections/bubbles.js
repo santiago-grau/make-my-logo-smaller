@@ -48,8 +48,8 @@ define(
 			},
 			{
 				user: 'designer',
-				copy: 'Like this?',
-				pos: 2200
+				copy: 'Something like this?',
+				pos: 3000
 			}
 		]);
 		return Bubbles;
