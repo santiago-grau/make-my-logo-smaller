@@ -12,15 +12,26 @@ define(
 				to: 900
 			},
 			{
-				id: 'Logo1', 
+				id: 'RemoveUnderline', 
 				from: 900,
 				to: 1800
 			},
 			{
-				id: 'Logo2', 
-				from: 2000,
+				id: 'FontChange1', 
+				from: 2200,
 				to: 3000
 			}
+			// },
+			// {
+			// 	id: 'Logo1', 
+			// 	from: 900,
+			// 	to: 1800
+			// },
+			// {
+			// 	id: 'Logo2', 
+			// 	from: 2000,
+			// 	to: 3000
+			// }
 		]);
 		return Animations;
 	}

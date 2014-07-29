@@ -12,7 +12,8 @@ define(
 				scrollSpeed: 0,
 				currentBubble: 0,
 				animation: 'Init',
-				prevAnimation: null
+				prevAnimation: null,
+				string: "Make my logo smaller"
 			}
 		});
 		return AppModel;
