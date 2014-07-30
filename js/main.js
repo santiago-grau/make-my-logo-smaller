@@ -1,7 +1,7 @@
 // Filename: main.js
 'use strict';
 require.config({
-	baseUrl: '../',
+	baseUrl: '',
 	shim: {
 		jqueryui: {
 			deps: [
