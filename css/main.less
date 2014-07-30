@@ -584,9 +584,6 @@ html, body{
 	}
 }
 
-
-
-
 #logo{
 	width: 100%;
 	height: 100%;
@@ -605,6 +602,7 @@ html, body{
 		> span{
 			display: inline-block;
 			text-align: left;
+			transition: line-height .1s;
 		}
 		b{
 			font-weight: normal;
@@ -633,75 +631,94 @@ html, body{
 		}
 		&.RemoveUnderline{
 			span{ width: 405px; }
+			&.swap{
+				span{
+					line-height: 100px;
+				}
+			}
 		}
-		&.FontChange1{ .defineSwap('f-light',405px,'Nixie One',456px); }
-		&.FontChange2{ .defineSwap('Nixie One',456px,'Abril Fatface',421px); }
-		&.FontSwap1{ .defineSwap('Abril Fatface',421px,'verlock SC',417px); }
-		&.FontSwap2{ .defineSwap('Overlock SC',417px,'Astloch',293px); }
-		&.FontSwap3{ .defineSwap('Astloch',293px,'Nova Round',426px); }
-		&.FontSwap4{ .defineSwap('Nova Round',426px,'Nosifer',730px); }
-		&.FontSwap5{ .defineSwap('Nosifer',730px,'Nova Oval',431px); }
-		&.FontSwap6{ .defineSwap('Nova Oval',431px,'Alfa Slab One',491px); }
-		&.FontSwap7{ .defineSwap('Alfa Slab One',491px,'Lilita One',397px); }
-		&.FontSwap8{ .defineSwap('Lilita One',397px,'Voces',431px); }
-		&.FontSwap9{ .defineSwap('Voces',431px,'Overlock',379px); }
-		&.FontSwap10{ .defineSwap('Overlock',379px,'Galindo',452px); }
-		&.FontSwap11{ .defineSwap('Galindo',452px,'Unkempt',385px); }
-		&.FontSwap12{ .defineSwap('Unkempt',385px,'Trade Winds',452px); }
-		&.FontSwap13{ .defineSwap('Trade Winds',452px,'Poller One',552px); }
-		&.FontSwap14{ .defineSwap('Poller One',552px,'Emilys Candy',372px); }
-		&.FontSwap15{ .defineSwap('Emilys Candy',372px,'Oldenburg',459px); }
-		&.FontSwap16{ .defineSwap('Oldenburg',459px,'Eater',538px); }
-		&.FontSwap17{ .defineSwap('Eater',538px,'Cabin Sketch',426px); }
-		&.FontSwap18{ .defineSwap('Cabin Sketch',426px,'Erica One',500px); }
-		&.FontSwap19{ .defineSwap('Erica One',500px,'Lily Script One',498px); }
-		&.FontSwap20{ .defineSwap('Lily Script One',398px,'Sail',426px); }
-		&.FontSwap21{ .defineSwap('Sail',452px,'Yeseva One',385px); }
-		&.FontSwap22{ .defineSwap('Yeseva One',417px,'Kelly Slab',293px); }
-		&.FontSwap23{ .defineSwap('Kelly Slab',417px,'Revalia',293px); }
-		&.FontSwap24{ .defineSwap('Revalia',417px,'Jolly Lodger',293px); }
-		&.FontSwap25{ .defineSwap('Jolly Lodger',417px,'Contrail One',293px); }
-		&.FontSwap26{ .defineSwap('Contrail One',417px,'Ruslan Display',293px); }
-		&.FontSwap27{ .defineSwap('Ruslan Display',538px,'Flamenco',426px); }
-		&.FontSwap28{ .defineSwap('Flamenco',426px,'Concert One',500px); }
-		&.FontSwap29{ .defineSwap('Concert One',417px,'Snowburst One',498px); }
-		&.FontSwap30{ .defineSwap('Snowburst One',398px,'Emblema One',426px); }
+		&.FontChange1{ .defineSwap('f-light',405px,100px,'Nixie One',456px,110px); }
+		&.FontChange2{ .defineSwap('Nixie One',456px,110px,'Abril Fatface',421px,106px); }
+		&.FontSwap1{ .defineSwap('Abril Fatface',421px,106px,'Overlock SC',411px,77px); }
+		&.FontSwap2{ .defineSwap('Overlock SC',411px,77px,'Astloch',293px,120px); }
+		&.FontSwap3{ .defineSwap('Astloch',293px,120px,'Nova Round',426px,110px); }
+		&.FontSwap4{ .defineSwap('Nova Round',426px,110px,'Nosifer',765px,130px); }
+		&.FontSwap5{ .defineSwap('Nosifer',765px,130px,'Nova Oval',431px,105px); }
+		&.FontSwap6{ .defineSwap('Nova Oval',431px,105px,'Alfa Slab One',491px,111px); }
+		&.FontSwap7{ .defineSwap('Alfa Slab One',491px,111px,'Lilita One',397px,100px); }
+		&.FontSwap8{ .defineSwap('Lilita One',397px,100px,'Voces',431px,105px); }
+		&.FontSwap9{ .defineSwap('Voces',431px,105px,'Overlock',379px,100px); }
+		&.FontSwap10{ .defineSwap('Overlock',379px,100px,'Galindo',452px,108px); }
+		&.FontSwap11{ .defineSwap('Galindo',452px,108px,'Unkempt',385px,90px); }
+		&.FontSwap12{ .defineSwap('Unkempt',385px,90px,'Trade Winds',452px,100px); }
+		&.FontSwap13{ .defineSwap('Trade Winds',452px,100px,'Poller One',552px,113px); }
+		&.FontSwap14{ .defineSwap('Poller One',552px,113px,'Emilys Candy',372px,100px); }
+		&.FontSwap15{ .defineSwap('Emilys Candy',372px,100px,'Oldenburg',459px,105px); }
+		&.FontSwap16{ .defineSwap('Oldenburg',459px,105px,'Eater',538px,115px); }
+		&.FontSwap17{ .defineSwap('Eater',538px,115px,'Cabin Sketch',426px,100px); }
+		&.FontSwap18{ .defineSwap('Cabin Sketch',426px,100px,'Erica One',500px,105px); }
+		&.FontSwap19{ .defineSwap('Erica One',500px,105px,'Lily Script One',401px,130px); }
+		&.FontSwap20{ .defineSwap('Lily Script One',401px,130px,'Sail',365px,87px); }
+		&.FontSwap21{ .defineSwap('Sail',365px,87px,'Yeseva One',460px,103px); }
+		&.FontSwap22{ .defineSwap('Yeseva One',460px,103px,'Kelly Slab',387px,100px); }
+		&.FontSwap23{ .defineSwap('Kelly Slab',387px,100px,'Revalia',547px,100px); }
+		&.FontSwap24{ .defineSwap('Revalia',547px,100px,'Jolly Lodger',247px,100px); }
+		&.FontSwap25{ .defineSwap('Jolly Lodger',247px,100px,'Contrail One',379px,116px); }
+		&.FontSwap26{ .defineSwap('Contrail One',379px,116px,'Ruslan Display',583px,115px); }
+		&.FontSwap27{ .defineSwap('Ruslan Display',583px,115px,'Flamenco',347px,105px); }
+		&.FontSwap28{ .defineSwap('Flamenco',347px,105px,'Concert One',378px,94px); }
+		&.FontSwap29{ .defineSwap('Concert One',378px,94px,'Snowburst One',468px,114px); }
+		&.FontSwap30{ .defineSwap('Snowburst One',468px,114px,'Emblema One',560px,105px); }
+		&.FontSwap31{ .defineSwap('Emblema One',560px,105px,'Supermercado One',390px,100px); }
+		&.FontSwap32{ .defineSwap('Supermercado One',390px,100px,'Limelight',485px,105px); }
+		&.FontSwap33{ .defineSwap('Limelight',485px,105px,'Elsie Swash Caps',410px,105px); }
+		&.FontSwap34{ .defineSwap('Elsie Swash Caps',410px,105px,'Lobster',382px,105px); }
+		&.FontSwap35{ .defineSwap('Lobster',382px,105px,'Atomic Age',495px,105px); }
+		&.FontSwap36{ .defineSwap('Atomic Age',495px,105px,'Sniglet',418px,100px); }
+		&.FontSwap37{ .defineSwap('Sniglet',418px,100px,'Paprika',488px,120px); }
+		&.FontSwap38{ .defineSwap('Paprika',488px,120px,'Smythe',296px,91px); }
+		&.FontSwap39{ .defineSwap('Smythe',296px,91px,'Shojumaru',636px,100px); }
+		&.FontSwap40{ .defineSwap('Shojumaru',636px,100px,'Londrina Outline',346px,100px); }
+		&.FontSwap41{ .defineSwap('Londrina Outline',346px,100px,'Finger Paint',488px,130px); }
+		&.FontSwap42{ .defineSwap('Finger Paint',488px,130px,'Frijole',626px,105px); }
+		&.FontSwap43{ .defineSwap('Frijole',626px,105px,'Unlock',477px,105px); }
+		&.FontSwap44{ .defineSwap('Unlock',477px,105px,'UnifrakturCook',349px,97px); }
+		&.FontSwap45{ .defineSwap('UnifrakturCook',347px,97px,'Goblin One',675px,125px); }
+		&.FontSwap46{ .defineSwap('Goblin One',675px,125px,'Monoton',627px,100px); }
+		&.FontSwap47{ .defineSwap('Monoton',627px,100px,'Special Elite',460px,99px); }
+		&.FontSwap48{ .defineSwap('Special Elite',460px,99px,'Squada One',341px,91px); }
+		&.FontSwap49{ .defineSwap('Squada One',341px,91px,'Patua One',417px,100px); }
+		&.FontSwap50{ .defineSwap('Patua One',417px,100px,'Chewy',360px,110px); }
 	}
 }
+::selection{
+	background-color: RGBA(255,255,0,0.4);
+	color: RGBA(0,0,255,0.9);
+}
+::-moz-selection{
+	background-color: RGBA(255,255,0,0.4);
+	color: RGBA(0,0,255,0.9);
+}
 
-
-.defineSwap(@font1,@w1,@font2,@w2){
+.defineSwap(@font1,@width1,@lineheight1,@font2,@width2,@lineheight2){
 	font-family: @font1, cursive;
-	span{ width: @w1; }
+	span{
+		width: @width1;
+		line-height: @lineheight1;
+	}
 	&.swap{
 		font-family: @font2, cursive;
-		span{ width: @w2; }
+		span{
+			width: @width2;
+			line-height: @lineheight2;
+		}
 	}
 }
 
 
 /*
 
-font-family: 'Supermercado One', cursive;
-font-family: 'Limelight', cursive;
-font-family: 'Elsie Swash Caps', cursive;
-font-family: 'Lobster', cursive;
-font-family: 'Atomic Age', cursive;
-font-family: 'Sniglet', cursive;
-font-family: 'Paprika', cursive;
-font-family: 'Smythe', cursive;
-font-family: 'Shojumaru', cursive;
-font-family: 'Londrina Outline', cursive;
-font-family: 'Finger Paint', cursive;
-font-family: 'Frijole', cursive;
-font-family: 'Unlock', cursive;
-font-family: 'UnifrakturCook', cursive;
-font-family: 'Goblin One', cursive;
-font-family: 'Monoton', cursive;
-font-family: 'Special Elite', cursive;
-font-family: 'Squada One', cursive;
-font-family: 'Patua One', cursive;
-font-family: 'Chewy', cursive;
+
 font-family: 'Lemon', cursive;
 font-family: 'Lobster Two', cursive;
 font-family: 'Righteous', cursive;

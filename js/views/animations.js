@@ -17,11 +17,29 @@ define(
 			},
 			scroll: function(scroll){
 				var index = Math.floor(scroll * this.mult);
-				this.parent.$('#inner_logo').html('<b>' + this.string.substring(0, index) + '</b>' + this.string.substring(index, this.string.length) );
+				this.parent.$('#inner_logo').html('<span id="selected" >' + this.string.substring(0, index) + '</span>' + this.string.substring(index, this.string.length) );
+				this.selectText('selected');
 			},
 			endPosition: function(){
 				this.parent.$('#inner_logo').html(this.string );
 				this.parent.$el.children('span').addClass('swap');
+			},
+			selectText: function(element){
+				var doc = document;
+				var text = doc.getElementById(element);
+				var range;
+				var selection;
+				if (doc.body.createTextRange) {
+					range = document.body.createTextRange();
+					range.moveToElementText(text);
+					range.select();
+				} else if (window.getSelection) {
+					selection = window.getSelection();
+					range = document.createRange();
+					range.selectNodeContents(text);
+					selection.removeAllRanges();
+					selection.addRange(range);
+				}
 			}
 		});
 		var animations = {
@@ -46,6 +64,7 @@ define(
 				},
 				endPosition: function(){
 					this.parent.$('#inner_logo').html(this.string);
+					this.parent.$el.children('span').addClass('swap');
 				}
 			}),
 			FontChange1: FontChange.extend(),
@@ -79,7 +98,27 @@ define(
 			FontSwap27: FontChange.extend(),
 			FontSwap28: FontChange.extend(),
 			FontSwap29: FontChange.extend(),
-			FontSwap30: FontChange.extend()
+			FontSwap30: FontChange.extend(),
+			FontSwap31: FontChange.extend(),
+			FontSwap32: FontChange.extend(),
+			FontSwap33: FontChange.extend(),
+			FontSwap34: FontChange.extend(),
+			FontSwap35: FontChange.extend(),
+			FontSwap36: FontChange.extend(),
+			FontSwap37: FontChange.extend(),
+			FontSwap38: FontChange.extend(),
+			FontSwap39: FontChange.extend(),
+			FontSwap40: FontChange.extend(),
+			FontSwap41: FontChange.extend(),
+			FontSwap42: FontChange.extend(),
+			FontSwap43: FontChange.extend(),
+			FontSwap44: FontChange.extend(),
+			FontSwap45: FontChange.extend(),
+			FontSwap46: FontChange.extend(),
+			FontSwap47: FontChange.extend(),
+			FontSwap48: FontChange.extend(),
+			FontSwap49: FontChange.extend(),
+			FontSwap50: FontChange.extend()
 		}
 		var Animations = Backbone.View.extend({
 			el: '#logo',
