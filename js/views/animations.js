@@ -13,12 +13,16 @@ define(
 			initialize: function(data){
 				_.extend(this, data);
 				_.bindAll(this, 'scroll');
-				this.mult = this.string.length/(this.model.get('to') - this.model.get('from') - 95);
+				this.mult = this.string.length/(this.model.get('to') - this.model.get('from') - 10);
 			},
 			scroll: function(scroll){
 				var index = Math.floor(scroll * this.mult);
 				this.parent.$('#inner_logo').html('<span id="selected" >' + this.string.substring(0, index) + '</span>' + this.string.substring(index, this.string.length) );
 				this.selectText('selected');
+			},
+			initPosition: function(){
+				this.parent.$('#inner_logo').html(this.string );
+				this.parent.$el.children('span').removeClass('swap');
 			},
 			endPosition: function(){
 				this.parent.$('#inner_logo').html(this.string );
@@ -133,8 +137,10 @@ define(
 			},
 			setAnimation: function(model){
 				if (this.parent.model.get('scrollSpeed') >= 0){
+					console.log('          └─────> End animation: ' + model.get('animation') + ' [scrollTop -> '+ this.parent.$el.scrollTop() +']');
 					if(this.animation && this.animation.endPosition) this.animation.endPosition();
 				} else {
+					console.log('          └─────> Start animation: ' + model.get('animation') + ' [scrollTop -> '+ this.parent.$el.scrollTop() +']');
 					if(this.animation && this.animation.initPosition) this.animation.initPosition();
 				}
 				if(model){

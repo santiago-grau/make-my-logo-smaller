@@ -46,7 +46,7 @@ require.config({
 });
 require(['views/app'],
 	function(App){
-		console.log('╔╦╗╔═╗╦╔═╔═╗         \n║║║╠═╣╠╩╗║╣          \n╩ ╩╩ ╩╩ ╩╚═╝         \n╔╦╗╦ ╦  ╦  ╔═╗╔═╗╔═╗ \n║║║╚╦╝  ║  ║ ║║ ╦║ ║ \n╩ ╩ ╩   ╩═╝╚═╝╚═╝╚═╝ \n╔═╗╔╦╗╔═╗╦  ╦  ╔═╗╦═╗\n╚═╗║║║╠═╣║  ║  ║╣ ╠╦╝\n╚═╝╩ ╩╩ ╩╩═╝╩═╝╚═╝╩╚═\n.....................\n└─────> DEV BY PROPER CODE\n└─────> ♥ C.M. \n└─────> App started')
+		console.log('╔╦╗╔═╗╦╔═╔═╗         \n║║║╠═╣╠╩╗║╣          \n╩ ╩╩ ╩╩ ╩╚═╝         \n╔╦╗╦ ╦  ╦  ╔═╗╔═╗╔═╗ \n║║║╚╦╝  ║  ║ ║║ ╦║ ║ \n╩ ╩ ╩   ╩═╝╚═╝╚═╝╚═╝ \n╔═╗╔╦╗╔═╗╦  ╦  ╔═╗╦═╗\n╚═╗║║║╠═╣║  ║  ║╣ ╠╦╝\n╚═╝╩ ╩╩ ╩╩═╝╩═╝╚═╝╩╚═\n.....................\n└─────> DEV BY PROPER CODE\n└─────> No em moriré denyorança ans denyorança viuré \n└─────> App started')
 		window.app = new App();
 	}
 );

@@ -18,6 +18,14 @@ define(
 				this.bubbles = new Bubbles({parent:this});
 				this.animations = new Animations({parent:this});
 			},
+			 events: {
+				'keyup': 'logKey',
+				'keypress': 'logKey'
+			},
+			logKey: function(e) {
+				if(e.keyCode == 40) this.$el.scrollTop(this.$el.scrollTop()+1);
+				if(e.keyCode == 38) this.$el.scrollTop(this.$el.scrollTop()-1);
+			},
 			scroll: function(){
 				console.log(this.$el.scrollTop())
 				this.model.set('scrollSpeed', this.$el.scrollTop() - this.model.get('scroll'));
